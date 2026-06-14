@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>نظام كاشير وإدارة المخزون</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- الشريط العلوي -->
+        <header>
+            <h1>🏪 نظام كاشير المتجر</h1>
+            <div class="date-time" id="dateTime"></div>
+        </header>
+
+        <!-- أزرار التنقل السريع (Dashboard) -->
+        <div class="nav-buttons">
+            <button class="nav-btn active" data-tab="pos">🧾 نقطة البيع</button>
+            <button class="nav-btn" data-tab="products">📦 إدارة المنتجات</button>
+            <button class="nav-btn" data-tab="invoices">🧾 الفواتير</button>
+            <button class="nav-btn" data-tab="reports">📊 التقارير</button>
+        </div>
+
+        <!-- ================= قسم نقطة البيع (POS) ================= -->
+        <div id="posTab" class="tab-content active">
+            <div class="pos-layout">
+                <!-- قائمة المنتجات -->
+                <div class="products-panel">
+                    <div class="search-bar">
+                        <input type="text" id="productSearch" placeholder="🔍 بحث باسم المنتج...">
+                    </div>
+                    <div id="productsGrid" class="products-grid"></div>
+                </div>
+
+                <!-- سلة الشراء -->
+                <div class="cart-panel">
+                    <div class="cart-header">
+                        <h3>سلة الشراء</h3>
+                        <button id="clearCartBtn" class="clear-cart">🗑️ تفريغ السلة</button>
+                    </div>
+                    <div id="cartItems" class="cart-items"></div>
+                    <div class="cart-summary">
+                        <div>الإجمالي: <span id="cartTotal">0.00</span> ج.م</div>
+                        <button id="checkoutBtn" class="checkout-btn">💰 إنهاء البيع</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= قسم إدارة المنتجات ================= -->
+        <div id="productsTab" class="tab-content">
+            <div class="form-card">
+                <h3>➕ إضافة / تعديل منتج</h3>
+                <input type="text" id="prodId" placeholder="الرقم التسلسلي (اختياري)" autocomplete="off">
+                <input type="text" id="prodName" placeholder="اسم المنتج" autocomplete="off">
+                <input type="number" id="prodPrice" placeholder="السعر" autocomplete="off">
+                <input type="number" id="prodStock" placeholder="الكمية في المخزون" autocomplete="off">
+                <button id="saveProductBtn">💾 حفظ المنتج</button>
+                <button id="cancelEditBtn" style="background:#6c757d;">❌ إلغاء التعديل</button>
+            </div>
+            <div id="productsTable" class="products-table-container"></div>
+        </div>
+
+        <!-- ================= قسم الفواتير ================= -->
+        <div id="invoicesTab" class="tab-content">
+            <div id="invoicesList" class="invoices-list"></div>
+        </div>
+
+        <!-- ================= قسم التقارير ================= -->
+        <div id="reportsTab" class="tab-content">
+            <div class="report-card">
+                <h3>إجمالي المبيعات</h3>
+                <div id="totalSales">0.00 ج.م</div>
+            </div>
+            <div class="report-card">
+                <h3>عدد الفواتير</h3>
+                <div id="invoicesCount">0</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
